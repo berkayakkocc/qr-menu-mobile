@@ -151,8 +151,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                               setState(() => _obscure = !_obscure),
                         ),
                       ),
-                      validator: (v) => (v == null || v.length < 6)
-                          ? 'Şifre en az 6 karakter olmalı'
+                      validator: (v) => (v == null || v.length < 8)
+                          ? 'Şifre en az 8 karakter olmalı'
                           : null,
                     ),
                     const SizedBox(height: 16),
