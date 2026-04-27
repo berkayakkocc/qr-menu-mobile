@@ -43,13 +43,13 @@ class ApiService {
   static Future<dynamic> _json(Future<http.Response> req) async {
     final res = await req;
     if (res.statusCode >= 400) _fail(res);
-    return jsonDecode(res.body);
+    return jsonDecode(utf8.decode(res.bodyBytes));
   }
 
   static Never _fail(http.Response res) {
     String msg = 'İstek başarısız (${res.statusCode})';
     try {
-      msg = (jsonDecode(res.body) as Map<String, dynamic>)['error'] as String? ?? msg;
+      msg = (jsonDecode(utf8.decode(res.bodyBytes)) as Map<String, dynamic>)['error'] as String? ?? msg;
     } catch (_) {}
     throw Exception(msg);
   }

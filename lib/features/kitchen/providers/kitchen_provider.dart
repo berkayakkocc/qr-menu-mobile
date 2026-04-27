@@ -37,8 +37,15 @@ class KitchenNotifier
     }
   }
 
-  Future<void> advance(String orderId) async {
-    await ApiService.patch('/orders/$orderId/status', {});
+  Future<void> advance(String orderId, String currentStatus) async {
+    const nextStatus = {
+      'pending': 'preparing',
+      'preparing': 'ready',
+      'ready': 'done',
+    };
+    final next = nextStatus[currentStatus];
+    if (next == null) return;
+    await ApiService.patch('/orders/$orderId/status', {'status': next});
     await load();
   }
 

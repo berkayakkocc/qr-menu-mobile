@@ -79,8 +79,9 @@ class _ActiveOrdersTab extends ConsumerWidget {
             itemCount: orders.length,
             itemBuilder: (_, i) => _OrderCard(
               order: orders[i],
-              onAdvance: () =>
-                  ref.read(kitchenProvider(restaurantId).notifier).advance(orders[i].id),
+              onAdvance: () => ref
+                  .read(kitchenProvider(restaurantId).notifier)
+                  .advance(orders[i].id, orders[i].status),
             ),
           ),
         );
