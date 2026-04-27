@@ -6,8 +6,10 @@ class AppConfig {
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml3cWtlZmd6dnVpcnJ0cnBsdWV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczMDMxMjIsImV4cCI6MjA5Mjg3OTEyMn0.zLqijo_Xjbm9bK-dTB6UvpsBL_qf-0N6J0oEfP_MHEE';
 
   // Production: flutter run --dart-define=BACKEND_URL=https://api.siteadın.com
-  static const _productionUrl =
-      String.fromEnvironment('BACKEND_URL', defaultValue: '');
+  static const _productionUrl = String.fromEnvironment(
+    'BACKEND_URL',
+    defaultValue: 'https://qr-menu-backend-production.up.railway.app',
+  );
 
   static String get backendUrl {
     if (_productionUrl.isNotEmpty) return _productionUrl;
