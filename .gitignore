@@ -11,6 +11,11 @@ local.properties
 android/.gradle/
 android/captures/
 android/local.properties
+# Signing - do not commit
+android/key.properties
+android/app-release.jks
+android/*.jks
+
 ios/.symlinks/
 ios/Pods/
 ios/Flutter/flutter_export_environment.sh
