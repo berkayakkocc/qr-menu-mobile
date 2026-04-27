@@ -32,6 +32,9 @@ class ApiService {
   static Future<dynamic> put(String path, Map<String, dynamic> body) =>
       _json(http.put(_uri(path), headers: _headers, body: jsonEncode(body)));
 
+  static Future<dynamic> patch(String path, Map<String, dynamic> body) =>
+      _json(http.patch(_uri(path), headers: _headers, body: jsonEncode(body)));
+
   static Future<void> delete(String path) async {
     final res = await http.delete(_uri(path), headers: _headers);
     if (res.statusCode >= 400) _fail(res);
