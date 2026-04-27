@@ -20,6 +20,11 @@ class DashboardScreen extends ConsumerWidget {
         title: const Text('QR Menü'),
         actions: [
           IconButton(
+            icon: const Icon(Icons.kitchen),
+            tooltip: 'Mutfak Ekranı',
+            onPressed: () => context.push('/kitchen'),
+          ),
+          IconButton(
             icon: const Icon(Icons.qr_code_2),
             tooltip: 'QR Kodu Göster',
             onPressed: () => context.push('/qr'),

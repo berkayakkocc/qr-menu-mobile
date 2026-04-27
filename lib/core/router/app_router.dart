@@ -13,6 +13,7 @@ import '../../features/public_menu/screens/public_menu_screen.dart';
 import '../../features/public_menu/screens/qr_scan_screen.dart';
 import '../../features/restaurant/screens/item_form_screen.dart';
 import '../../features/restaurant/screens/menu_detail_screen.dart';
+import '../../features/kitchen/screens/kitchen_screen.dart';
 import '../../features/restaurant/screens/qr_display_screen.dart';
 
 bool _isPublicPath(String loc) =>
@@ -80,6 +81,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         ),
       ),
       GoRoute(path: '/qr', builder: (_, __) => const QRDisplayScreen()),
+      GoRoute(path: '/kitchen', builder: (_, __) => const KitchenScreen()),
 
       // Public (no auth required)
       GoRoute(path: '/scan', builder: (_, __) => const QRScanScreen()),
