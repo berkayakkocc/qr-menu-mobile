@@ -129,6 +129,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   onPressed: () => context.go('/register'),
                   child: const Text('Hesabın yok mu? Kayıt ol'),
                 ),
+                const Divider(height: 32),
+                OutlinedButton.icon(
+                  onPressed: () => context.go('/scan'),
+                  icon: const Icon(Icons.qr_code_scanner),
+                  label: const Text('Müşteriyim, QR kodu okut'),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                  ),
+                ),
               ],
             ),
           ),
