@@ -174,27 +174,19 @@ class _ItemCard extends ConsumerWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (item.imageUrl != null) ...[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.network(
-                item.imageUrl!,
-                width: 72,
-                height: 72,
-                fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => Container(
-                  width: 72,
-                  height: 72,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Icon(Icons.fastfood, color: Colors.grey),
-                ),
-              ),
-            ),
-            const SizedBox(width: 12),
-          ],
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: item.imageUrl != null
+                ? Image.network(
+                    item.imageUrl!,
+                    width: 80,
+                    height: 80,
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, __, ___) => _itemPlaceholder(),
+                  )
+                : _itemPlaceholder(),
+          ),
+          const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -228,6 +220,16 @@ class _ItemCard extends ConsumerWidget {
     );
   }
 }
+
+Widget _itemPlaceholder() => Container(
+      width: 80,
+      height: 80,
+      decoration: BoxDecoration(
+        color: const Color(0xFFEFF6FF),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: const Icon(Icons.fastfood_outlined, color: Color(0xFF2563EB), size: 32),
+    );
 
 class _QtyControl extends ConsumerWidget {
   final PublicItem item;
