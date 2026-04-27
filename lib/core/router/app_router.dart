@@ -7,6 +7,9 @@ import '../../features/auth/screens/login_screen.dart';
 import '../../features/auth/screens/register_screen.dart';
 import '../../features/auth/screens/splash_screen.dart';
 import '../../features/dashboard/screens/dashboard_screen.dart';
+import '../../features/restaurant/screens/item_form_screen.dart';
+import '../../features/restaurant/screens/menu_detail_screen.dart';
+import '../../features/restaurant/screens/qr_display_screen.dart';
 
 // Köprü: Riverpod AuthState değişince GoRouter'ı yeniler
 class _RouterRefreshNotifier extends ChangeNotifier {
@@ -46,6 +49,27 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(path: '/login', builder: (_, __) => const LoginScreen()),
       GoRoute(path: '/register', builder: (_, __) => const RegisterScreen()),
       GoRoute(path: '/dashboard', builder: (_, __) => const DashboardScreen()),
+      GoRoute(
+        path: '/menus/:menuId',
+        builder: (_, state) => MenuDetailScreen(
+          menuId: state.pathParameters['menuId']!,
+          menuName: state.extra as String?,
+        ),
+      ),
+      GoRoute(
+        path: '/items/new',
+        builder: (_, state) => ItemFormScreen(
+          categoryId: state.uri.queryParameters['categoryId'] ?? '',
+        ),
+      ),
+      GoRoute(
+        path: '/items/:itemId/edit',
+        builder: (_, state) => ItemFormScreen(
+          categoryId: state.uri.queryParameters['categoryId'] ?? '',
+          itemId: state.pathParameters['itemId'],
+        ),
+      ),
+      GoRoute(path: '/qr', builder: (_, __) => const QRDisplayScreen()),
     ],
   );
 });
